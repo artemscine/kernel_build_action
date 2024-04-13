@@ -33,11 +33,19 @@ jobs:
   kernel-build:
     runs-on: ubuntu-22.04
 
+
     steps:
-      - name: Initializing environment
-        run: |
-          git config --global user.name "sirnewbies"
-          git config --global user.email "yusromi04@gmail.com"
+
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+       - name: Cleanup
+         uses: rokibhasansagar/slimhub_actions@main       
+       - name: Checkouts
+         uses: actions/checkout@v2
+
+       - name: Init
+         run: |
+          git config --global user.name "artemscine"
+          git config --global user.email "artemscine@gmail.com"
           df -h
           ld --version
           gcc -v
@@ -46,22 +54,9 @@ jobs:
           sudo apt install -y bc bison build-essential ccache curl flex glibc-source g++-multilib gcc-multilib binutils-aarch64-linux-gnu git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2 tmate ssh neofetch
           neofetch
 
-      - name: Compiling
-        run: |
-          if [ "${DEVICE}" = "tissot" ]; then
-            wget https://raw.githubusercontent.com/sirnewbies/kernel_build_action/main/scripts/tissot_build_script.sh
-            bash tissot_build_script.sh
-          elif [ "${DEVICE}" = "tissot-mainline" ]; then
-            wget https://raw.githubusercontent.com/sirnewbies/kernel_build_action/main/scripts/tissot-mainline_build_script.sh
-            bash tissot-mainline_build_script.sh
-          elif [ "${DEVICE}" = "topaz" ]; then 
-            wget https://raw.githubusercontent.com/sirnewbies/kernel_build_action/main/scripts/topaz_build_script.sh
+       - name: Compiling
+         run: |
+            wget https://raw.githubusercontent.com/artemscine/kernel_build_action/main/scripts/topaz_build_script.sh
             bash topaz_build_script.sh
-          elif [ "${DEVICE}" = "sweet" ]; then
-            wget https://raw.githubusercontent.com/sirnewbies/kernel_build_action/main/scripts/sweet_build_script.sh
-            bash sweet_build_script.sh
-          else
-            echo "Device not supported yet"
-          fi
 
 
