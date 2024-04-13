@@ -72,8 +72,8 @@ sendinfo() {
 sync() {
     cd $WORK_DIR
     echo "Syncing manifest"
-    repo init -u https://github.com/sirnewbies/kernel_manifest.git -b main
-    repo sync
+    repo init -u https://github.com/artemscine/kernel_manifest.git -b main --depth=1
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     sudo apt install -y ccache
     echo "Done"
 }
