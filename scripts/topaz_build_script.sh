@@ -74,6 +74,7 @@ sync() {
     echo "Syncing manifest"
     repo init -u https://github.com/artemscine/kernel_manifest.git -b main --depth=1
     repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     sudo apt install -y ccache
     echo "Done"
 }
