@@ -37,13 +37,16 @@ jobs:
     steps:
 
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
-       - name: Cleanup
-         uses: rokibhasansagar/slimhub_actions@main       
-       - name: Checkouts
-         uses: actions/checkout@v2
+      # You might want to Checkout your repo first, but not mandatory
+      - uses: actions/checkout@v3
+      # Cleanup The Actions Workspace Using Custom Composite Run Actions
+      - uses: rokibhasansagar/slimhub_actions@main
+        # Optional key, "retain": Use only if you want something to keep
+        with:
+          retain: "gcc-13"
 
-       - name: Init
-         run: |
+      - name: Init
+        run: |
           git config --global user.name "artemscine"
           git config --global user.email "artemscine@gmail.com"
           df -h
@@ -54,8 +57,8 @@ jobs:
           sudo apt install -y bc bison build-essential ccache curl flex glibc-source g++-multilib gcc-multilib binutils-aarch64-linux-gnu git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2 tmate ssh neofetch
           neofetch
 
-       - name: Compiling
-         run: |
+      - name: Compiling
+        run: |
             wget https://raw.githubusercontent.com/artemscine/kernel_build_action/main/scripts/topaz_build_script.sh
             bash topaz_build_script.sh
 
