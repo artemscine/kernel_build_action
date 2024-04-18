@@ -94,7 +94,6 @@ finderr() {
         -d "parse_mode=markdown" \
         -d sticker="CAACAgIAAxkBAAED3JViAplqY4fom_JEexpe31DcwVZ4ogAC1BAAAiHvsEs7bOVKQsl_OiME" \
         -d text="Build throw an error(s)"
-    error_sticker
     exit 1
 }
 
@@ -106,7 +105,7 @@ compile() {
     fi
 
     cd $WORK_DIR
-    ./update_ksu.sh
+#    ./update_ksu.sh
     LTO=thin BUILD_CONFIG=$KERNEL_DIR/build.config.gki.aarch64 build/build.sh
 
     if ! [ -a "$IMAGE" ]; then
