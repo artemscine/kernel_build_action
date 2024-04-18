@@ -12,7 +12,7 @@ init() {
 WORK_DIR=$(pwd)
 ANYKERNEL="${WORK_DIR}/anykernel"
 KERNEL_DIR="topaz"
-IMAGE=$WORK_DIR/out/android13-5.15/dist/Image
+IMAGE=$WORK_DIR/out/android14-5.15/dist/Image
 DATE=$(date +"%Y%m%d-%H%M")
 START=$(date +"%s")
 CACHE=1
@@ -20,9 +20,9 @@ export CACHE
 export KBUILD_COMPILER_STRING
 ARCH=arm64
 export ARCH
-KBUILD_BUILD_HOST="sirnewbies"
+KBUILD_BUILD_HOST="artemscine-x99"
 export KBUILD_BUILD_HOST
-KBUILD_BUILD_USER="noob-server"
+KBUILD_BUILD_USER="artemscine"
 export KBUILD_BUILD_USER
 DEVICE="Xiaomi Redmi Note 12"
 export DEVICE
