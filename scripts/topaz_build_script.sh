@@ -12,7 +12,7 @@ init() {
 WORK_DIR=$(pwd)
 ANYKERNEL="${WORK_DIR}/anykernel"
 KERNEL_DIR="topaz"
-IMAGE=$WORK_DIR/out/android14-5.15/dist/Image
+IMAGE=$WORK_DIR/out/android13-5.15/dist/Image
 DATE=$(date +"%Y%m%d-%H%M")
 START=$(date +"%s")
 CACHE=1
@@ -73,7 +73,6 @@ sync() {
     cd $WORK_DIR
     echo "Syncing manifest"
     repo init -u https://github.com/artemscine/kernel_manifest.git -b main --depth=1
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     sudo apt install -y ccache
     echo "Done"
